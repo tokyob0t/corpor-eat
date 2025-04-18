@@ -1,3 +1,5 @@
+
+
 {
   pkgs ? import <nixpkgs> { },
 }:
@@ -5,15 +7,13 @@
 pkgs.mkShell {
   name = "corpor-eat-dev-env";
 
-  buildInputs =
-    (with pkgs; [
-      nodejs_20
+  buildInputs = with pkgs; [
       bun
       git
       biome
-    ])
-    ++ (with pkgs.nodePackages; [
       typescript
+      vue-language-server
       typescript-language-server
-    ]);
+      emmet-language-server
+  ];
 }
