@@ -26,13 +26,7 @@
 <script lang="ts">
 import type { PropType } from 'vue';
 import RestaurantDetailPopup from './RestaurantDetailPopup.vue';
-
-interface Restaurant {
-  id: number;
-  name: string;
-  image: string;
-  rating: number;
-}
+import type { Restaurant } from '@/types/index';
 
 export default {
   name: 'BigRestaurantCard',

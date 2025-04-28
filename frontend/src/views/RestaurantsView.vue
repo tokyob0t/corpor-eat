@@ -32,6 +32,7 @@
 </template>
 
 <script lang="ts">
+import type { Restaurant } from '@/types/index';
 import BigRestaurantCard from '@/components/BigRestaurantCard.vue';
 import restaurants from '@/data/restaurants.json';
 
@@ -42,7 +43,7 @@ export default {
   },
   data() {
     return {
-      restaurants,
+      restaurants: restaurants as Restaurant[],
       searchQuery: '',
       filteredRestaurants: [...restaurants], // Inicialmente todos los restaurantes
       sortOrder: 'desc', // Por defecto orden ascendente (se establece como 'desc' para rating de mayor a menor)
@@ -51,45 +52,41 @@ export default {
     };
   },
   methods: {
-    // Filtrar por búsqueda
     searchRestaurants() {
       if (this.searchQuery.trim() === '') {
-        this.filteredRestaurants = [...this.restaurants]; // Si la búsqueda está vacía, mostrar todos
-      } else {
-        this.filteredRestaurants = this.restaurants.filter((restaurant) =>
-          restaurant.name
-            .toLowerCase()
-            .includes(this.searchQuery.toLowerCase()),
-        );
+        this.filteredRestaurants = [...this.restaurants];
+        return;
       }
+
+      this.filteredRestaurants = this.restaurants.filter((r) =>
+        r.name.toLowerCase().includes(this.searchQuery.toLowerCase()),
+      );
     },
-    // Ordenar por Rating
+
     sortByRating() {
       this.isSortedByRating = true;
       this.isSortedByPrice = false;
       this.sortBy('rating');
     },
-    // Ordenar por Precio
+
     sortByPrice() {
       this.isSortedByRating = false;
       this.isSortedByPrice = true;
       this.sortBy('price');
     },
-    // Función común para ordenar
-    sortBy(criteria: string) {
+
+    sortBy(criteria: 'price' | 'rating') {
       this.filteredRestaurants.sort((a, b) => {
-        if (this.sortOrder === 'asc') {
-          return a[criteria] < b[criteria] ? -1 : 1;
-        } else {
-          return a[criteria] > b[criteria] ? -1 : 1;
-        }
+        if (this.sortOrder === 'asc') return a[criteria] < b[criteria] ? -1 : 1;
+
+        return a[criteria] > b[criteria] ? -1 : 1;
       });
-      // Cambiar el orden para la próxima vez
+
       this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
     },
   },
   created() {
-    this.sortByRating(); // Ordenar por rating al cargar la página
+    this.sortByRating();
   },
 };
 </script>
