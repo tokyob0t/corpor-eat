@@ -1,14 +1,14 @@
+<script lang="ts">
+export default {
+  name: 'Reservations',
+};
+</script>
+
 <template>
     <div class="reservations">
         <h1>Pagina de Reservaciones</h1>
     </div>
 </template>
-
-<script lang="ts">
-export default {
-    name: 'Reservations',
-};
-</script>
 
 
 

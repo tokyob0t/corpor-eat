@@ -1,30 +1,55 @@
 <template>
     <nav class="navbar">
         <div class="navbar-container">
-            <RouterLink to="/" class="navbar-logo">Reservas</RouterLink>
+            <li v-if="userStore.isAuthenticated && userStore.user?.role === 'admin'">
+                <RouterLink to="/admin" class="navbar-logo">Admin</RouterLink>
+            </li>
+            <li v-else>
+                <RouterLink to="/" class="navbar-logo">Reservas</RouterLink>
+            </li>
 
             <ul class="navbar-links">
                 <li>
                     <RouterLink to="/">Home</RouterLink>
                 </li>
-                <li>
+
+                <li v-if="userStore.isAuthenticated && userStore.user?.role === 'admin'">
+                    <RouterLink to="/admin">Dashboard</RouterLink>
+                </li>
+
+                <li v-else>
                     <RouterLink to="/reservations">Mis Reservas</RouterLink>
                 </li>
+
                 <li>
                     <RouterLink to="/restaurants">Restaurantes</RouterLink>
                 </li>
             </ul>
 
-            <RouterLink to="/auth" class="register-button">
-                Registrarse
-            </RouterLink>
+            <template v-if="userStore.isAuthenticated">
+                <button class="register-button" @click="logout">Cerrar sesión</button>
+            </template>
+            <template v-else>
+                <RouterLink to="/auth" class="register-button">Ingresar</RouterLink>
+            </template>
         </div>
     </nav>
 </template>
 
 <script lang="ts">
+import { useUserStore } from '@/stores/user';
+
 export default {
-    name: 'Navbar',
+  name: 'Navbar',
+  setup() {
+    const userStore = useUserStore();
+    return { userStore };
+  },
+  methods: {
+    logout() {
+      this.userStore.logout();
+    },
+  },
 };
 </script>
 

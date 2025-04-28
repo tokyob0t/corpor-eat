@@ -1,29 +1,67 @@
+<script lang="ts">
+import { useUserStore } from '@/stores/user';
+import { useRouter } from 'vue-router';
+
+export default {
+  name: 'AuthView',
+  data() {
+    return {
+      mode: 'login',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    };
+  },
+  setup() {
+    const userStore = useUserStore();
+    const router = useRouter();
+    return { userStore, router };
+  },
+  methods: {
+    handleSubmit() {
+      if (this.mode === 'login') {
+        const success = this.userStore.login(this.email, this.password);
+        if (success) {
+          this.router.push('/');
+        } else {
+          alert('Credenciales inválidas');
+        }
+      } else {
+        if (this.password !== this.confirmPassword) {
+          alert('Las contraseñas no coinciden');
+          return;
+        }
+        this.userStore.login(this.email, this.password);
+        this.router.push('/');
+      }
+    },
+  },
+};
+</script>
+
+
 <template>
     <div class="auth-container">
         <div class="auth-card">
             <div class="auth-tabs">
-                <button :class="{ active: mode === 'login' }" @click="mode = 'login'">
-                    Iniciar Sesión
-                </button>
-                <button :class="{ active: mode === 'register' }" @click="mode = 'register'">
-                    Registrarse
-                </button>
+                <button :class="{ active: mode === 'login' }" @click="mode = 'login'">Iniciar Sesión</button>
+                <button :class="{ active: mode === 'register' }" @click="mode = 'register'">Registrarse</button>
             </div>
 
-            <form>
+            <form @submit.prevent="handleSubmit">
                 <div class="form-group">
                     <label>Email:</label>
-                    <input type="email" required />
+                    <input v-model="email" type="email" required />
                 </div>
 
                 <div class="form-group">
                     <label>Contraseña:</label>
-                    <input type="password" required />
+                    <input v-model="password" type="password" required />
                 </div>
 
                 <div v-if="mode === 'register'" class="form-group">
                     <label>Confirmar Contraseña:</label>
-                    <input type="password" required />
+                    <input v-model="confirmPassword" type="password" required />
                 </div>
 
                 <button type="submit" class="submit-btn">
@@ -31,21 +69,11 @@
                 </button>
             </form>
 
-            <RouterLink to="/" class="back-home"> Volver al inicio</RouterLink>
+            <RouterLink to="/" class="back-home"> Volver al inicio </RouterLink>
         </div>
     </div>
 </template>
 
-<script lang="ts">
-export default {
-    name: 'AuthView',
-    data() {
-        return {
-            mode: 'login',
-        };
-    },
-};
-</script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');

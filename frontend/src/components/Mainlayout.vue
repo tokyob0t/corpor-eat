@@ -4,17 +4,20 @@
         <main class="content">
             <router-view />
         </main>
+        <Footer />
     </div>
 </template>
 
 <script lang="ts">
 import Navbar from './Navbar.vue';
+import Footer from './Footer.vue';
 
 export default {
-    name: 'MainLayout',
-    components: {
-        Navbar,
-    },
+  name: 'MainLayout',
+  components: {
+    Navbar,
+    Footer,
+  },
 };
 </script>
 
@@ -27,6 +30,5 @@ export default {
 
 .content {
     flex-grow: 1;
-    padding: 20px;
 }
 </style>
