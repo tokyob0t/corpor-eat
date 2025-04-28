@@ -4,69 +4,79 @@
     "description": "Mamma mia, la comida italiana más auténtica que jamás probarás.",
     "image": "https://via.placeholder.com/300x200?text=La+Bela+Italia",
     "rating": 4.7,
-    "reviews": 182
+    "reviews": 182,
+    "price": 30
   },
   {
     "name": "Sushi Haven",
     "description": "Comida japonesa con un toque especial de sushi y kamikazes del sabor.",
     "image": "https://via.placeholder.com/300x200?text=Sushi+Haven",
     "rating": 4.5,
-    "reviews": 220
+    "reviews": 220,
+    "price": 25
   },
   {
     "name": "Bistro Parisien",
     "description": "Comida francesa, pero no las ranas. ¡Aquí te sorprenderás!",
     "image": "https://via.placeholder.com/300x200?text=Bistro+Parisien",
     "rating": 4.3,
-    "reviews": 150
+    "reviews": 150,
+    "price": 40
   },
   {
     "name": "La Casa Mexicana",
     "description": "Sabor auténtico de México con tacos, burritos y más. ¡Viva la fiesta!",
     "image": "https://via.placeholder.com/300x200?text=La+Casa+Mexicana",
     "rating": 4.8,
-    "reviews": 300
+    "reviews": 300,
+    "price": 20
   },
   {
     "name": "Pasta Fresca",
     "description": "Pasta hecha a mano con ingredientes frescos y deliciosos, en cada plato.",
     "image": "https://via.placeholder.com/300x200?text=Pasta+Fresca",
     "rating": 4.6,
-    "reviews": 130
+    "reviews": 130,
+    "price": 35
   },
   {
     "name": "El Grill Argentino",
     "description": "La mejor carne asada a la parrilla, con el toque único de Argentina.",
     "image": "https://via.placeholder.com/300x200?text=El+Grill+Argentino",
     "rating": 4.9,
-    "reviews": 98
+    "reviews": 98,
+    "price": 45
   },
   {
     "name": "Sabor Thai",
     "description": "Exquisita comida tailandesa con sabores intensos y picantes. ¡Atrévete!",
     "image": "https://via.placeholder.com/300x200?text=Sabor+Thai",
     "rating": 4.4,
-    "reviews": 75
+    "reviews": 75,
+    "price": 28
   },
   {
     "name": "La Trattoria di Roma",
     "description": "Comida tradicional italiana de la mano de expertos chefs romanos.",
     "image": "https://via.placeholder.com/300x200?text=La+Trattoria+di+Roma",
     "rating": 4.2,
-    "reviews": 220
+    "reviews": 220,
+    "price": 33
   },
   {
     "name": "Sushi and Roll",
     "description": "Un nuevo concepto de sushi, combinando ingredientes frescos y platos innovadores.",
     "image": "https://via.placeholder.com/300x200?text=Sushi+and+Roll",
     "rating": 4.7,
-    "reviews": 180
+    "reviews": 180,
+    "price": 27
   },
   {
     "name": "Pizzeria Napoli",
     "description": "La pizza más auténtica, con ingredientes traídos directamente de Italia.",
     "image": "https://via.placeholder.com/300x200?text=Pizzeria+Napoli",
     "rating": 4.6,
-    "reviews": 210
+    "reviews": 210,
+    "price": 22
   }
 ]
