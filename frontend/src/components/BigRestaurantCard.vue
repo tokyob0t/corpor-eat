@@ -24,7 +24,15 @@
 </template>
 
 <script lang="ts">
+import type { PropType } from 'vue';
 import RestaurantDetailPopup from './RestaurantDetailPopup.vue';
+
+interface Restaurant {
+  id: number;
+  name: string;
+  image: string;
+  rating: number;
+}
 
 export default {
   name: 'BigRestaurantCard',
@@ -32,19 +40,22 @@ export default {
     RestaurantDetailPopup,
   },
   props: {
-    restaurant: Object,
+    restaurant: {
+      type: Object as PropType<Restaurant>,
+      required: true,
+    },
   },
   data() {
     return {
-      showPopup: false, // Controla si el popup está visible
+      showPopup: false,
     };
   },
   methods: {
     openPopup() {
-      this.showPopup = true; // Muestra el popup
+      this.showPopup = true;
     },
     closePopup() {
-      this.showPopup = false; // Cierra el popup
+      this.showPopup = false;
     },
   },
 };

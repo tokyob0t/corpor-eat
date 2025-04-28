@@ -8,7 +8,7 @@
                 <h2>Resumen</h2>
                 <p><strong>Fecha:</strong> {{ reservation.date || 'No especificado' }}</p>
                 <p><strong>Hora:</strong> {{ reservation.time || 'No especificado' }}</p>
-                <p><strong>Número de personas:</strong> {{ reservation.numPeople || 'No especificado' }}</p>
+                <p><strong>Número de personas:</strong> {{ reservation.numPeople || 0 }}</p>
             </div>
 
             <form class="payment-form" @submit.prevent="payNow">
@@ -45,7 +45,7 @@ export default {
       reservation: {
         date: '',
         time: '',
-        numPeople: '',
+        numPeople: 0,
       },
       paymentInfo: {
         name: '',
@@ -56,8 +56,6 @@ export default {
     };
   },
   created() {
-    // Aquí puedes recibir parámetros de navegación si quieres (por ejemplo, usar this.$route.query)
-    // Este es un ejemplo simulado.
     this.reservation = {
       date: '2025-05-01',
       time: '20:00',
@@ -67,7 +65,7 @@ export default {
   methods: {
     payNow() {
       alert('Pago realizado con éxito');
-      this.$router.push({ name: 'home' }); // O cualquier página de finalización
+      this.$router.push({ name: 'home' });
     },
   },
 };
