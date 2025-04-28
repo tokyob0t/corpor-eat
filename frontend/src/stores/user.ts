@@ -4,7 +4,9 @@ import users from '@/data/users.json';
 
 export const useUserStore = defineStore('user', () => {
   const isAuthenticated = ref(false);
-  const user = ref<{ email: string; role: 'admin' | 'user' } | null>(null);
+  const user = ref<{ email: string; role: 'admin' | 'user' | string } | null>(
+    null,
+  );
 
   function login(email: string, password: string) {
     const foundUser = users.find(
