@@ -12,10 +12,16 @@
 </template>
 
 <script lang="ts">
+import type { Restaurant } from '@/types';
+import type { PropType } from 'vue';
+
 export default {
   name: 'SmallRestaurantCard',
   props: {
-    restaurant: Object,
+    restaurant: {
+      type: Object as PropType<Restaurant>,
+      required: true,
+    },
   },
 };
 </script>
