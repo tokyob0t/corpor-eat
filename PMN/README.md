@@ -130,8 +130,8 @@ graph TD
 ### Pasos:
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tuusuario/corpor-eat-pmn.git
-cd corpor-eat-pmn
+git clone https://github.com/tokyob0t/corpor-eat.git
+cd corpor-eat/PMN
 
 # Instalar dependencias
 bun install
